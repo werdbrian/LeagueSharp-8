@@ -526,7 +526,8 @@ namespace Xerath
             {
                 foreach (var enemy in ObjectManager.Get<Obj_AI_Hero>().Where(h => h.IsValidTarget() && (float)Player.GetSpellDamage(h, SpellSlot.R) * 3 > h.Health))
                 {
-                    Ping(enemy.Position.To2D());
+                    if (Player.Distance(enemy.Position) < R.Range)
+                        Ping(enemy.Position.To2D());
                 }
             }
 
